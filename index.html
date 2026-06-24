@@ -1,78 +1,170 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Sorry Kirat ❤️</title>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Kirat ❤️</title>
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
 body{
-  margin:0;
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#ff7aa2;
-  font-family:Arial,sans-serif;
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(-45deg,#ff9a9e,#fad0c4,#ffdde1,#ffc3a0);
+background-size:400% 400%;
+animation:bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+.heart{
+position:absolute;
+font-size:20px;
+animation:float 8s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{opacity:1;}
+100%{
+transform:translateY(-120px);
+opacity:0;
+}
+}
+
+.envelope{
+position:relative;
+width:260px;
+height:180px;
+cursor:pointer;
+transition:1s;
+}
+
+.base{
+position:absolute;
+width:100%;
+height:100%;
+background:#ff5f8f;
+border-radius:0 0 15px 15px;
+}
+
+.flap{
+position:absolute;
+width:100%;
+height:100%;
+background:#ff7aa2;
+clip-path:polygon(0 0,50% 55%,100% 0);
+transform-origin:top;
+transition:1s;
+z-index:3;
 }
 
 .card{
-  background:white;
-  padding:40px;
-  border-radius:20px;
-  text-align:center;
-  width:80%;
-  max-width:500px;
+position:absolute;
+left:10px;
+right:10px;
+top:10px;
+height:160px;
+background:white;
+border-radius:12px;
+padding:15px;
+text-align:center;
+transform:translateY(70px);
+transition:1s;
+z-index:1;
 }
 
-h1{
-  color:#ff3366;
+.card h1{
+color:#ff4f81;
+font-size:26px;
+margin-bottom:8px;
 }
 
-button{
-  padding:12px 25px;
-  border:none;
-  border-radius:20px;
-  background:#ff3366;
-  color:white;
-  font-size:18px;
+.card p{
+font-size:14px;
+color:#555;
+line-height:1.5;
+}
+
+.open .flap{
+transform:rotateX(180deg);
+}
+
+.open .card{
+transform:translateY(-140px);
+}
+
+.note{
+position:absolute;
+bottom:50px;
+color:white;
+font-weight:bold;
+text-shadow:0 2px 5px rgba(0,0,0,.2);
+animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+50%{transform:scale(1.08);}
 }
 </style>
 </head>
-
 <body>
 
+<div class="note">Click the envelope ✉️</div>
+
+<div class="envelope" onclick="openLetter()">
+<div class="flap"></div>
+
+<div class="base"></div>
+
 <div class="card">
-  <h1>❤️ Sorry Kirat ❤️</h1>
+<h1>🥺 Sorry Kirat ❤️</h1>
 
-  <p>
-    I am sorry putt 🥺<br><br>
+<p>
+I am sorry putt...<br><br>
 
-    I know I made a mistake.<br>
-    I never wanted to hurt you.<br><br>
+I know I made you upset and I hate that feeling.
+You mean so much to me and I never want to be the reason for your sadness.<br><br>
 
-    You mean a lot to me and I miss your smile. ❤️<br><br>
+Please forgive your Harbhuuu ❤️🌹
+</p>
 
-    Love,<br>
-    Harbhuuu 🌹
-  </p>
-
-  <button onclick="showMessage()">
-    Open My Heart ❤️
-  </button>
+</div>
 </div>
 
 <script>
-function showMessage(){
-  document.body.innerHTML =
-  '<div style="display:flex;justify-content:center;align-items:center;height:100vh;background:#ff3366;color:white;text-align:center;font-family:Arial;">' +
-  '<div>' +
-  '<h1 style="font-size:60px;">🥺 SORRY PUTT 🥺</h1>' +
-  '<h2>Kirat ❤️</h2>' +
-  '<p>Please forgive your Harbhuuu 🌹</p>' +
-  '<div style="font-size:50px;">❤️ ❤️ ❤️</div>' +
-  '</div>' +
-  '</div>';
+
+function openLetter(){
+document.querySelector('.envelope').classList.toggle('open');
 }
+
+for(let i=0;i<40;i++){
+let heart=document.createElement('div');
+heart.classList.add('heart');
+heart.innerHTML='❤️';
+heart.style.left=Math.random()*100+'vw';
+heart.style.animationDuration=(5+Math.random()*5)+'s';
+heart.style.fontSize=(15+Math.random()*25)+'px';
+document.body.appendChild(heart);
+}
+
 </script>
 
 </body>
